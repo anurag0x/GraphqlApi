@@ -2,7 +2,10 @@
 
 This project aims to develop a robust Social Media API using NodeJS, emphasizing proficiency in Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP) concepts, ExpressJS, and GraphQL. The API will simulate fundamental functionalities of a social media platform, including user registration, content posting, and user interaction through following other users.
 
-
+**Deployed Link**
+ ```
+  https://easy-tan-dhole-hat.cyclic.app/
+   ```
 **Table of Contents**
 
 1. Introduction
