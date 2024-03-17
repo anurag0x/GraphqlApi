@@ -1,6 +1,6 @@
 **GraphqlApi**
 
-A brief description or introduction of the project.
+This project aims to develop a robust Social Media API using NodeJS, emphasizing proficiency in Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP) concepts, ExpressJS, and GraphQL. The API will simulate fundamental functionalities of a social media platform, including user registration, content posting, and user interaction through following other users. After development, the API will be deployed to a cloud service for accessibility.
 
 **Table of Contents**
 
@@ -86,6 +86,3 @@ Provide instructions on how to use the application or interact with its features
 - Schema: Provide GraphQL schema definition.
 - Resolvers: Describe available resolvers for querying and mutating data.
 
-**8. License**
-
-Specify the project's license, if applicable, along with any terms and conditions for its use.
