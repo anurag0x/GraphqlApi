@@ -3,9 +3,13 @@ const bodyParser = require('body-parser');
 const authController = require('./controller/authController');
 const postController = require('./controller/postController');
 const userController = require('./controller/userController');
+const typeDefs = require('./graphql/schema');
+const resolvers = require('./graphql/resolvers');
 const auth = require("./utils/auth")
+const { ApolloServer } = require('@apollo/server');
+const {expressMiddleware } = require('@apollo/server/express4')
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -18,7 +22,23 @@ app.post('/register', authController.registerUser);
 
 app.post('/login', authController.loginUser);
 
-app.use(auth)
+async function startServer() {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    uploads: true,
+  });
+
+  await server.start();
+  app.use('/graphql',expressMiddleware(server))
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, async () => {
+      console.log(`Server is running on http://localhost:${PORT}/graphql`);
+  });
+}
+
+// app.use(auth)
 app.post('/posts', postController.createPost);
 
 
@@ -33,14 +53,5 @@ app.get('/unfollow/:userId', userController.followUserHandler);
 
 
 
-// app.use('/graphql', graphqlHTTP({
-//   schema,
-//   rootValue: resolvers,
-//   graphiql: true,
-// }));
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
+startServer()
 
